@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#ff1493,#ff69b4,#ffc0cb);
+color:white;
+text-align:center;
+overflow:hidden;
+}
+
+#screen{
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+height:100vh;
+padding:20px;
+}
+
+h1{font-size:38px;}
+h2{font-size:28px;}
+p{font-size:22px;max-width:90%;}
+
+button{
+padding:15px 30px;
+font-size:20px;
+border:none;
+border-radius:30px;
+background:white;
+color:#ff1493;
+margin:10px;
+}
+
+input{
+padding:10px;
+font-size:18px;
+border-radius:10px;
+border:none;
+}
+
+img{
+width:80%;
+max-width:300px;
+border-radius:20px;
+margin:10px;
+}
+
+.final{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+<source src="bg.mp3">
+</audio>
+
+<div id="screen">
+
+<h1>Click Here 💖</h1>
+<button onclick="start()">Start</button>
+
+</div>
+
+<script>
+
+function start(){
+document.getElementById("screen").innerHTML=`
+<p id="type"></p>
+<br>
+<button onclick="next1()">Yes 💖</button>
+<button onclick="no()">No 😏</button>
+`;
+
+let text="Kya aap dekhna chahoge ki maine kya banaya aapke liye?";
+let i=0;
+
+function typing(){
+if(i<text.length){
+document.getElementById("type").innerHTML+=text.charAt(i);
+i++;
+setTimeout(typing,40);
+}
+}
+typing();
+}
+
+function no(){
+alert("Soch lo 😏 itna bhi attitude mat dikhao");
+}
+
+function next1(){
+document.getElementById("screen").innerHTML=`
+<h2>First Memory ❤️</h2>
+<img src="pic1.jpg">
+<p>Compliment do 😏</p>
+<input id="c1">
+<br>
+<button onclick="check1()">Next</button>
+`;
+}
+
+function check1(){
+let v=document.getElementById("c1").value;
+if(v.trim()==""){
+alert("Compliment to do 😒");
+}else{
+next2();
+}
+}
+
+function next2(){
+document.getElementById("screen").innerHTML=`
+<h2>Second Memory 💖</h2>
+<img src="pic2.jpg">
+<p>Yeh kaisi lagi?</p>
+<input id="c2">
+<br>
+<button onclick="check2()">Next</button>
+`;
+}
+
+function check2(){
+let v=document.getElementById("c2").value;
+if(v.trim()==""){
+alert("Answer do 😏");
+}else{
+next3();
+}
+}
+
+function next3(){
+document.getElementById("screen").innerHTML=`
+<h2>Last Memory 🥹</h2>
+<img src="pic3.jpg">
+<p>Sach batao… kya main tumhare liye special hoon?</p>
+<input id="c3">
+<br>
+<button onclick="check3()">Next</button>
+`;
+}
+
+function check3(){
+let v=document.getElementById("c3").value;
+if(v.trim()==""){
+alert("Answer do 😒");
+}else{
+msg1();
+}
+}
+
+function msg1(){
+document.getElementById("screen").innerHTML=`
+<p>
+Hope ki tumhe achha lage 🥹❤️<br><br>
+I know itna special nahi hai…<br>
+but thoda sa khush ho jana bacha 🫶🏻
+</p>
+<button onclick="almost()">Next</button>
+`;
+}
+
+function almost(){
+document.getElementById("screen").innerHTML=`
+<h2>Boom 💥 you are almost there...</h2>
+<button onclick="longmsg()">Continue</button>
+`;
+}
+
+function longmsg(){
+document.getElementById("screen").innerHTML=`
+<div style="height:70vh; overflow:auto; padding:10px;">
+<p>
+Happy Birthday my love ❤️<br><br>
+
+I don’t know how to say everything perfectly…  
+but you mean so much to me 🥹  
+
+You are not just my boyfriend…  
+you are my comfort, my safe place, my happiness 💖  
+
+Even if you feel your birthday is bad luck…  
+for me, it’s the most beautiful day 😌  
+
+Because that’s the day my favorite person came into this world ❤️  
+
+I just want you to smile today…  
+even a little bit 🤏🥹  
+
+And remember… I’m always with you 💋  
+</p>
+</div>
+
+<button onclick="final()">Final 💖</button>
+`;
+}
+
+function final(){
+document.body.innerHTML=`
+<div class="final">
+
+<img src="cake.png">
+
+<h1>
+HAPPIEST BIRTHDAY MY LOVE 🥹❤️💋<br>
+I LOVE YOUUUUU SOOOO MUCHHH 👉🏻👈🏻❤️
+</h1>
+
+<button onclick="play()">Play Voice 🎧</button>
+
+<audio id="voice">
+<source src="voice.mp3">
+</audio>
+
+</div>
+`;
+}
+
+function play(){
+document.getElementById("voice").play();
+}
+
+</script>
+
+</body>
+</html>
